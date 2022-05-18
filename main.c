@@ -7,11 +7,11 @@ int maxMul(uint8_t *p,int sizeBuffer,int serialNumber){
     /*maxMul adında 3 parametreli bir fonksiyon oluşturdum. Bu fonksiyonun
     ilk parametresi main fonksiyonundan gelen dizinin elemanlarını tutuyor.
     ikinci parametresi dizinin eleman sayısını tutuyor.
-    üçüncü parametresi ise ardışık kaç sayının çarpımını stediğimizi tutuyor.
+    üçüncü parametresi ise ardışık kaç sayının çarpımını istediğimizi tutuyor.
     */
   unsigned long long mul=1,maxMul=1,startPosition,finishPosition;
   /*ilk çarpımı tutması için mul, en büyük çarpımı tutması için ise maxMul değişkenini tanımladım.
-  Bu çarpımlara ilk değer olarak 1 verdim. Yeni değeri bu değerin yerine yazılıyor.
+  Bu çarpımlara ilk değer olarak 1 verdim. Yeni çarpım değer bu değerin yerine yazılıyor.
   startPosition serinin ilk elemanını, finishPosition ise serinin son elemanını tutan değişkenlerdir. */
     for(int i=0;i<sizeBuffer-(serialNumber-1);i++){
         mul=1;
@@ -20,12 +20,12 @@ int maxMul(uint8_t *p,int sizeBuffer,int serialNumber){
         }
         if(mul>maxMul){
             maxMul=mul;
-            startPosition=i+1;   // En büyük çarpım baþlama pozisyonu
+            startPosition=i+1;   // En büyük çarpım başlama pozisyonu
             finishPosition=i+serialNumber;   // En büyük çarpım bitiş pozisyonu
         }
     }
     /*ilk for döngümüz serimizin ilk elemanından başlar.
-    Dizinin eleman sayısından-(serialNumber-1) olana kadar  birer artarak tüm diziyi döner.
+    Dizinin eleman sayısı-(serialNumber-1) olana kadar  birer artarak tüm diziyi döner.
     Bunun nedeni dizinin ilk elemanının sıfır kabul edilmesidir
     sizeBuffer-(serialNumber-1) olmasının nedeni mesela 13 ardışık sayıyı düşünürsek dizinin son 12 elemanı kalana kadar
     çarpma devam eder.Fakat en son 12 eleman  kaldığında  bizden 13 eleman istendiği için çarpma işlemini yapmaz.
@@ -63,14 +63,15 @@ int main()
         3,1,5,5,2,0,0,0,5,5,9,3,5,7,2,9,7,2,5,7,1,6,3,6,2,6,9,5,6,1,8,8,2,6,7,0,4,2,8,2,5,2,4,8,3,6,0,0,8,
         2,3,2,5,7,5,3,0,4,2,0,7,5,2,9,6,3,4,5,0};
 
-    int buffLength=1000;
+    int buffLength=1000; 
+    //Dizinin eleman sayısı belli olduğu için tekrar hesaplatmadım ve kolaylık olsun diye değişkene atadım.
 
     printf("\n");
 
-    /*Burada hsadece 13 arsışık çarpımı değil herhangi bir
+    /*Burada sadece 13 ardışık çarpımı değil herhangi bir
     15 ardışık çarpımıda bulmamız istendiği için bu değeri kullanıcıdan istedim*/
     int howManyNumber;
-    printf("How many consecutive numbers do you want to multiply ?");
+    printf("How many consecutive numbers do you want to multiply ? ");
     scanf("%d",&howManyNumber);
 
     //En son main fonksiyonundan maxMul fonksiyonunu çağırıp verilen parametrelerle işlem yapılmasını sağladım.
